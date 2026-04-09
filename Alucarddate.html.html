@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🖤 Alucard Date 🖤</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Gothic Background */
+  body {
+    margin: 0;
+    font-family: 'Cinzel', serif; /* Medieval-inspired font */
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #0d0208, #281d1b, #1f0a0a);
+    background-size: 400% 400%;
+    animation: gothicBG 12s infinite alternate ease-in-out;
+    color: #d1c4c4;
+  }
+
+  @keyframes gothicBG {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+
+  /* Box Styling */
+  .box {
+    text-align: center;
+    padding: 40px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #6b2525;
+    border-radius: 10px;
+    width: 400px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #d1c4c4;
+    text-shadow: 0 0 10px #c31313;
+  }
+
+  button {
+    cursor: pointer;
+    padding: 12px 30px;
+    font-size: 18px;
+    border: 2px solid #6b2525;
+    border-radius: 10px;
+    margin: 12px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    color: #d1c4c4;
+    background: #281d1b;
+    font-family: 'Cinzel', serif;
+  }
+
+  button:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 4px 20px rgba(193, 19, 19, 0.9);
+  }
+
+  #yes {
+    border-color: #6b2525;
+    background: linear-gradient(90deg, #6b2525, #311212);
+  }
+
+  #no {
+    border-color: #821919;
+    background: linear-gradient(90deg, #821919, #1a0e0e);
+    position: absolute;
+  }
+
+  /* Romantic Message */
+  .message {
+    display: none;
+    font-size: 2.2em;
+    color: #d1c4c4;
+    margin-top: 20px;
+    font-family: 'Cinzel', serif;
+    animation: fadeIn 2s ease-in-out;
+    text-shadow: 0 0 15px #8B0000;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Gothic Bats */
+  .heart {
+    position: absolute;
+    color: #8b0000;
+    animation: floatUp 5s infinite;
+    font-size: 2em;
+    opacity: 0.8;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(100vh) rotateZ(0);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-20%) rotateZ(720deg);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h1>Date with Alucard?</h1> <!-- Title in English -->
+  <button id="yes">Yes</button> <!-- English Text -->
+  <button id="no">No</button>
+</div>
+
+<div id="loveMessage" class="message">Happy Me! 🖤🦇</div> <!-- Romantic Message -->
+
+<script>
+  // "No" Button Escape
+  let noBtn = document.getElementById("no");
+
+  // Make "No" Button Escape on Hover
+  noBtn.addEventListener("mouseover", function() {
+    let padding = 20; // Avoid edges
+    let x = Math.random() * (window.innerWidth - noBtn.offsetWidth - padding);
+    let y = Math.random() * (window.innerHeight - noBtn.offsetHeight - padding);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  });
+
+  // "Yes" Button to Show Message
+  let yesBtn = document.getElementById("yes");
+  let loveMessage = document.getElementById("loveMessage");
+
+  yesBtn.addEventListener("click", function() {
+    // Show Message
+    loveMessage.style.display = "block";
+
+    // Add Floating "Bats"
+    for (let i = 0; i < 20; i++) {
+      let heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "🦇"; // Bat Emoji
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+      document.body.appendChild(heart);
+
+      // Remove "Bat" after animation ends
+      heart.addEventListener("animationend", function() {
+        heart.remove();
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
